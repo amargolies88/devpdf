@@ -1,15 +1,14 @@
 const generator = require('./generateHTML');
-const htmlToPdf = require('html-to-pdf');
 const inquirer = require('inquirer');
-
-
+var fs = require('fs'),
+    convertFactory = require('electron-html-to');
+var conversion = convertFactory({
+  converterPath: convertFactory.converters.PDF
+});
 
 const questions = [
 
 ];
-
-
-
 
 // Initialization function
 function init() {
@@ -30,25 +29,18 @@ function init() {
         .then(answers => {
             console.log(answers.color);
             let html = generator.generateHTML(answers);
-            htmlToPdf.convertHTMLString(html, 'path/to/destination.pdf',
-                function (error, success) {
-                    if (error) {
-                        console.log('Oh noes! Errorz!');
-                        console.log(error);
-                    } else {
-                        console.log('Woot! Success!');
-                        console.log(success);
-                    }
+            conversion({ html: html }, function (err, result) {
+
+                if (err) {
+                    return console.error(err);
                 }
-            );
+                console.log(result.numberOfPages);
+                console.log(result.logs);
+                result.stream.pipe(fs.createWriteStream('./profile.pdf'));
+                conversion.kill();
+            });
             console.log('hello');
         });
 }
 
 init();
-
-
-// IMPORT EXAMPLE:
-// var badmath = require("./badmath.js");
-// console.log(badmath.pie);
-// console.log(badmath.predictable());

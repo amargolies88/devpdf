@@ -217,9 +217,3 @@ module.exports = {
     colors: colors,
     generateHTML: generateHTML
 };
-
-// export example:
-// module.exports = {
-//     pie: pie,
-//     predictable: predictable
-//   };
