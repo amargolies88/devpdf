@@ -3,7 +3,7 @@ const colors = {
         wrapperBackground: "#E6E1C3",
         headerBackground: "#C1C72C",
         headerColor: "black",
-        photoBorderColor: "#black"
+        photoBorderColor: "black"
     },
     blue: {
         wrapperBackground: "#5F64D3",
@@ -60,11 +60,7 @@ function generateHTML(data) {
           }
   
           .wrapper {
-              background-color: $ {
-                  colors[data.color].wrapperBackground
-              }
-  
-              ;
+              background-color: ${colors[data.color].wrapperBackground};
               padding-top: 100px;
           }
   
@@ -122,17 +118,8 @@ function generateHTML(data) {
               justify-content: center;
               flex-wrap: wrap;
   
-              background-color: $ {
-                  colors[data.color].headerBackground
-              }
-  
-              ;
-  
-              color: $ {
-                  colors[data.color].headerColor
-              }
-  
-              ;
+              background-color: ${colors[data.color].headerBackground};
+              color: ${colors[data.color].headerColor};
               padding: 10px;
               width: 95%;
               border-radius: 6px;
@@ -145,11 +132,7 @@ function generateHTML(data) {
               object-fit: cover;
               margin-top: -75px;
   
-              border: 6px solid $ {
-                  colors[data.color].photoBorderColor
-              }
-  
-              ;
+              border: 6px solid ${colors[data.color].photoBorderColor};
               box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
           }
   
@@ -200,17 +183,8 @@ function generateHTML(data) {
               padding: 20px;
               border-radius: 6px;
   
-              background-color: $ {
-                  colors[data.color].headerBackground
-              }
-  
-              ;
-  
-              color: $ {
-                  colors[data.color].headerColor
-              }
-  
-              ;
+              background-color: ${colors[data.color].headerBackground};
+              color: ${colors[data.color].headerColor};
               margin: 20px;
           }
   
@@ -232,7 +206,6 @@ function generateHTML(data) {
               }
           }
       </style>
-  
   <body>
           <p>hello?</p>
   </body>
