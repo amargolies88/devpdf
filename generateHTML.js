@@ -26,6 +26,8 @@ const colors = {
 };
 
 function generateHTML(data) {
+
+
     return `<!DOCTYPE html>
   <html lang="en">
   
@@ -207,7 +209,9 @@ function generateHTML(data) {
           }
       </style>
   <body>
-          <p>hello?</p>
+          <div class="photo-header>
+          <img src="${data.imageURL}">
+          </div>
   </body>
   </head>
   </html>`
