@@ -37,7 +37,9 @@ function init() {
             // Make a request for a user with a given ID
             axios.get(`https://api.github.com/users/${data.gun}`)
                 .then(function (response) {
+                    console.log(response.data);
                     //store data in data object
+                    data.id = response.data.id;
                     data.fullName = (response.data.name) ? response.data.name : data.gun;
                     data.imageURL = response.data.avatar_url;
                     data.followerCount = response.data.followers;
@@ -71,10 +73,10 @@ function init() {
                             let html = generator.generateHTML(data);
 
                             // write html to html file (for testing)
-                            fs.writeFile('htmls.html', html, function (err) {
-                                if (err) throw err;
-                                console.log('Saved!');
-                            });
+                            // fs.writeFile('htmls.html', html, function (err) {
+                            //     if (err) throw err;
+                            //     console.log('Saved!');
+                            // });
 
                             // convert html to pdf
                             conversion({ html: html }, function (err, result) {
@@ -83,7 +85,7 @@ function init() {
                                 }
                                 // console.log(result.numberOfPages);
                                 // console.log(result.logs);
-                                result.stream.pipe(fs.createWriteStream('./profile.pdf'));
+                                result.stream.pipe(fs.createWriteStream(`./profiles/${data.gun}_${data.id}.pdf`));
                                 conversion.kill();
                             });
                             console.log('hello');
