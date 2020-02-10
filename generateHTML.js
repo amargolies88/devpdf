@@ -1,3 +1,5 @@
+apiKey = "AIzaSyAYG8IJ2K3mVlSeYRt7OefvTz6zsAZNo-U";
+
 const colors = {
     green: {
         wrapperBackground: "#E6E1C3",
@@ -209,9 +211,42 @@ function generateHTML(data) {
           }
       </style>
   <body>
-          <div class="photo-header>
-          <img src="${data.imageURL}">
-          </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="photo-header">
+                    <img src="${data.imageURL}">
+                    <h1>${data.fullName}</h1>
+                    <div class="links-nav">
+                        <a class="nav-link" target="_blank" href="https://www.google.com/maps/place/${data.location}">Location</a>
+                        <a class="nav-link" target="_blank" href="${data.githuburl}">GitHub</a>
+                        <a class="nav-link" target="_blank" href="${data.blog}">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <main>
+
+          ${data.bio}
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="card">
+                        <p>Repositories: ${data.pubRepoCount}</p>
+                        <p>Followers: ${data.followerCount}</p>
+                        <p>Following: ${data.followingCount}</p>
+                        <p>GitHub Stars: ${data.stars}</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
   </body>
   </head>
   </html>`
