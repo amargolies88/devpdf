@@ -37,7 +37,7 @@ function init() {
             // Make a request for a user with a given ID
             axios.get(`https://api.github.com/users/${data.gun}`)
                 .then(function (response) {
-                    console.log(response.data);
+                    // console.log(response.data);
                     //store data in data object
                     data.id = response.data.id;
                     data.fullName = (response.data.name) ? response.data.name : data.gun;
@@ -88,7 +88,7 @@ function init() {
                                 result.stream.pipe(fs.createWriteStream(`./profiles/${data.gun}_${data.id}.pdf`));
                                 conversion.kill();
                             });
-                            console.log('hello');
+                            console.log(`Saved PDF file: ${data.gun}_${data.id}`);
                         })
                         .catch(function (error) {
                             // handle error
